@@ -27,7 +27,7 @@
 | product_description  | text       | null: false                    |
 | product_category_id  | integer    | null: false                    |
 | product_condition_id | integer    | null: false                    |
-| shipping_charges_id  | integer    | null: false                    |
+| shipping_charge_id   | integer    | null: false                    |
 | prefecture_id        | integer    | null: false                    |
 | days_to_ship_id      | integer    | null: false                    |
 | selling_price        | integer    | null: false                    |
@@ -44,7 +44,7 @@
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
 | user      | references | null: false, foreign_key: true |
-| item.user | references | null: false, foreign_key: true |
+| item      | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -57,12 +57,12 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | post_code      | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id  | integer    | null: false                    |
 | municipalities | string     | null: false                    |
 | house_number   | string     | null: false                    |
-| building _name | string     |                                |
+| building_name  | string     |                                |
 | phone_number   | string     | null: false                    |
-| user           | references | null: false, foreign_key: true |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
