@@ -29,27 +29,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Product description can't be blank")
       end
       it '商品のカテゴリーが空では登録できない' do
-        @item.product_category_id = ''
+        @item.product_category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Product category can't be blank")
       end
       it '商品の状態が空では登録できない' do
-        @item.product_condition_id = ''
+        @item.product_condition_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Product condition can't be blank")
       end
       it '配送料の負担が空では登録できない' do
-        @item.shipping_charge_id = ''
+        @item.shipping_charge_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
       end
       it '配送元の地域が空では登録できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '配送までの日数が空では登録できない' do
-        @item.days_to_ship_id = ''
+        @item.days_to_ship_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship can't be blank")
       end
@@ -79,6 +79,13 @@ RSpec.describe Item, type: :model do
         @item.selling_price = 'abc'
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price is invalid. Input half-width characters')
+      end
+
+      ## ユーザー情報
+      it 'ユーザー情報がない場合は登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
