@@ -75,6 +75,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price is invalid. Input half-width characters')
       end
+      it '販売価格が半角数値以外では登録できない' do
+        @item.selling_price = 'abc'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Selling price is invalid. Input half-width characters')
+      end
     end
   end
 end
