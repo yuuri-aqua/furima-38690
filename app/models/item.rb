@@ -16,10 +16,13 @@ class Item < ApplicationRecord
   validates :shipping_charge_id,   numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id,        numericality: { other_than: 1, message: "can't be blank" }
   validates :days_to_ship_id,      numericality: { other_than: 1, message: "can't be blank" }
-  validates :selling_price,        presence: true
+
+  validates :selling_price, presence: true
+  validates :selling_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+  validates :selling_price, numericality: { only_integer: true, message: 'is invalid. Input half-width characters'}
 
   validates :image, presence: true
 
-  validates :selling_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' },
-                                  format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' }
+
+  
 end
