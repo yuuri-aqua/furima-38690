@@ -13,10 +13,10 @@ class PurchaseAddress
     validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
     ### 個人用メモ：prefecture か prefecture_id か後ほど検証する
   
-    def save
-      purchase = Purchase.create(item_id: item_id, user_id: user_id)
+  def save
+    purchase = Purchase.create(item_id: item_id, user_id: user_id)
       
-      Address.create(postal_code: postal_code, prefecture: prefecture, municipalities: municipalities, house_number: house_number, building_name: building_name, phone_number: phone_number, purchase_id: purchase.id)
-    end
+    Address.create(postal_code: postal_code, prefecture: prefecture, municipalities: municipalities, house_number: house_number, building_name: building_name, phone_number: phone_number, purchase_id: purchase.id)
+  end
 
 end
