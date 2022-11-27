@@ -8,7 +8,7 @@ RSpec.describe PurchaseAddress, type: :model do
 
   describe '購入情報の保存' do
     context '購入情報の保存ができるとき' do
-      it '郵便番号、都道府県、市区町村、番地、電話番号とuser_id・item_idが存在すれば保存できる' do
+      it '郵便番号、都道府県、市区町村、番地、電話番号とuser_id・item_id、tokenが存在すれば保存できる' do
         expect(@purchase_address).to be_valid
       end
       it '建物名は空でも保存できる' do
@@ -82,6 +82,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.phone_number = '０９０１２３４５６７８'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'tokenが空だと保存できない' do
+        @purchase_address.token = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
