@@ -62,7 +62,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '1.2.3'
   gem 'unicorn', '5.4.1'
 end
 
